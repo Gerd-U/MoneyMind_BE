@@ -2,10 +2,13 @@ package com.example.MoneyMind.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.example.MoneyMind.entities.MovementType;
 import com.example.MoneyMind.exceptions.MovementTypeNotFoundException;
 import com.example.MoneyMind.repositories.MovementTypeRepository;
 
+@Service
 public class MovementTypeService implements IMovementTypeService {
 
     private final MovementTypeRepository movementTypeRepository;
