@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.example.MoneyMind.dtos.UserDto;
 import com.example.MoneyMind.dtos.UserRequestDto;
-import com.example.MoneyMind.mapper.UserMapper;
+import com.example.MoneyMind.mappers.UserMapper;
 import com.example.MoneyMind.services.IUserService;
 import jakarta.transaction.Transactional;
 

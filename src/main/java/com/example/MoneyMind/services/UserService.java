@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.example.MoneyMind.dtos.UserRequestDto;
 import com.example.MoneyMind.entities.User;
 import com.example.MoneyMind.exceptions.UserNotFoundException;
-import com.example.MoneyMind.repository.UserRepository;
+import com.example.MoneyMind.repositories.UserRepository;
 
 @Service
 public class UserService implements IUserService {
