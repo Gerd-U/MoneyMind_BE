@@ -1,4 +1,4 @@
-package com.example.MoneyMind.mapper;
+package com.example.MoneyMind.mappers;
 
 import java.util.List;
 import java.util.stream.Collectors;

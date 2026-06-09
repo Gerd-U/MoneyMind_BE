@@ -1,4 +1,4 @@
-package com.example.MoneyMind.repository;
+package com.example.MoneyMind.repositories;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package com.example.MoneyMind.controller;
+package com.example.MoneyMind.controllers;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.example.MoneyMind.dtos.UserDto;
 import com.example.MoneyMind.facade.IUserFacade;
-import com.example.MoneyMind.mapper.UserMapper;
+import com.example.MoneyMind.mappers.UserMapper;
 import com.example.MoneyMind.models.UserRequestModel;
 import com.example.MoneyMind.models.UserResponseModel;
 
