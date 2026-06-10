@@ -17,4 +17,6 @@ public interface IUserFacade {
 
     void removeUser(String email);
 
+    UserDto login(String email, String password);
+
 }
