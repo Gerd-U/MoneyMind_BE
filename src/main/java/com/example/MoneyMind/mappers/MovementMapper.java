@@ -24,30 +24,30 @@ public class MovementMapper {
                 .paymentMethod(paymentMethod)
                 .amount(dto.getAmount())
                 .description(dto.getDescription())
-                .transactionDate(dto.getTransactionDate())
+                .movementDate(dto.getMovementDate())
                 .createdAt(LocalDateTime.now())
                 .build();
     }
 
-    public MovementResponseDTO toResponseDTO(Movement transaction) {
-        if (transaction == null) return null;
+    public MovementResponseDTO toResponseDTO(Movement movement) {
+        if (movement == null) return null;
 
         return MovementResponseDTO.builder()
-                .idTransaction(transaction.getIdTransaction())
-                .idUsuario(transaction.getIdUsuario())
-                .idCategory(transaction.getCategory().getIdCategory())
-                .categoryName(transaction.getCategory().getCategoryName())
-                .idPaymentMethod(transaction.getPaymentMethod().getIdPaymentMethod())
-                .paymentMethodName(transaction.getPaymentMethod().getMethodName())
-                .amount(transaction.getAmount())
-                .description(transaction.getDescription())
-                .transactionDate(transaction.getTransactionDate())
-                .createdAt(transaction.getCreatedAt())
+                .idMovement(movement.getIdMovement())
+                .idUsuario(movement.getIdUsuario())
+                .idCategory(movement.getCategory().getIdCategory())
+                .categoryName(movement.getCategory().getCategoryName())
+                .idPaymentMethod(movement.getPaymentMethod().getIdPaymentMethod())
+                .paymentMethodName(movement.getPaymentMethod().getMethodName())
+                .amount(movement.getAmount())
+                .description(movement.getDescription())
+                .movementDate(movement.getMovementDate())
+                .createdAt(movement.getCreatedAt())
                 .build();
     }
 
-    public List<MovementResponseDTO> toResponseDTOList(List<Movement> transactions) {
-        if (transactions == null) return null;
-        return transactions.stream().map(this::toResponseDTO).collect(Collectors.toList());
+    public List<MovementResponseDTO> toResponseDTOList(List<Movement> movements) {
+        if (movements == null) return null;
+        return movements.stream().map(this::toResponseDTO).collect(Collectors.toList());
     }
 }

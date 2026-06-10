@@ -19,13 +19,13 @@ public class MovementService implements IMovementService {
     }
 
     @Override
-    public Movement save(Movement transaction) {
-        return movementRepository.save(transaction);
+    public Movement save(Movement movement) {
+        return movementRepository.save(movement);
     }
 
     @Override
     public List<Movement> getByUsuarioAndDates(Integer idUsuario, LocalDate startDate, LocalDate endDate) {
-        return movementRepository.findByIdUsuarioAndTransactionDateBetween(
+        return movementRepository.findByIdUsuarioAndMovementDateBetween(
                 idUsuario, startDate, endDate);
     }
 
@@ -36,14 +36,14 @@ public class MovementService implements IMovementService {
     }
 
     @Override
-    public Movement update(Integer id, Movement updatedTransaction) {
-        Movement transaction = getById(id);
-        transaction.setAmount(updatedTransaction.getAmount());
-        transaction.setDescription(updatedTransaction.getDescription());
-        transaction.setTransactionDate(updatedTransaction.getTransactionDate());
-        transaction.setCategory(updatedTransaction.getCategory());
-        transaction.setPaymentMethod(updatedTransaction.getPaymentMethod());
-        return movementRepository.save(transaction);
+    public Movement update(Integer id, Movement updatedMovement) {
+        Movement movement = getById(id);
+        movement.setAmount(updatedMovement.getAmount());
+        movement.setDescription(updatedMovement.getDescription());
+        movement.setMovementDate(updatedMovement.getMovementDate());
+        movement.setCategory(updatedMovement.getCategory());
+        movement.setPaymentMethod(updatedMovement.getPaymentMethod());
+        return movementRepository.save(updatedMovement);
     }
 
     @Override

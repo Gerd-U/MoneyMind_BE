@@ -37,6 +37,6 @@ public class MovementRequestDTO {
     @Size(max = 200, message = "The description cannot exceed 200 characters")
     private String description;
 
-    @NotNull(message = "The transaction date is required")
-    private LocalDate transactionDate;
+    @NotNull(message = "The movement date is required")
+    private LocalDate movementDate;
 }
