@@ -17,7 +17,7 @@ import lombok.Setter;
 @Builder
 public class MovementResponseDTO {
 
-    private Integer idTransaction;
+    private Integer idMovement;
     private Integer idUsuario;
     private Integer idCategory;
     private String categoryName;
@@ -25,6 +25,6 @@ public class MovementResponseDTO {
     private String paymentMethodName;
     private BigDecimal amount;
     private String description;
-    private LocalDate transactionDate;
+    private LocalDate movementDate;
     private LocalDateTime createdAt;
 }

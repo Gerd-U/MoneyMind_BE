@@ -43,8 +43,8 @@ public class MovementFacade implements IMovementFacade {
         PaymentMethod paymentMethod = paymentMethodRepository.findById(requestDTO.getIdPaymentMethod())
                 .orElseThrow(() -> new PaymentMethodNotFoundException("Método de pago no encontrado"));
 
-        Movement transaction = movementMapper.toEntity(requestDTO, category, paymentMethod);
-        return movementMapper.toResponseDTO(movementService.save(transaction));
+        Movement movement = movementMapper.toEntity(requestDTO, category, paymentMethod);
+        return movementMapper.toResponseDTO(movementService.save(movement));
     }
 
     @Override
@@ -66,8 +66,8 @@ public class MovementFacade implements IMovementFacade {
         PaymentMethod paymentMethod = paymentMethodRepository.findById(requestDTO.getIdPaymentMethod())
                 .orElseThrow(() -> new PaymentMethodNotFoundException("Método de pago no encontrado"));
 
-        Movement transaction = movementMapper.toEntity(requestDTO, category, paymentMethod);
-        return movementMapper.toResponseDTO(movementService.update(id, transaction));
+        Movement movement = movementMapper.toEntity(requestDTO, category, paymentMethod);
+        return movementMapper.toResponseDTO(movementService.update(id, movement));
     }
 
     @Override

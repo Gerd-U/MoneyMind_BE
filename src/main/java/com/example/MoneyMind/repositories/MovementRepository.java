@@ -11,6 +11,6 @@ import com.example.MoneyMind.entities.Movement;
 @Repository
 public interface MovementRepository extends JpaRepository<Movement, Integer> {
 
-    List<Movement> findByIdUsuarioAndTransactionDateBetween(
+    List<Movement> findByIdUsuarioAndMovementDateBetween(
             Integer idUsuario, LocalDate startDate, LocalDate endDate);
 }

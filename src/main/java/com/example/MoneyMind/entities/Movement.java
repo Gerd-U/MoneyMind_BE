@@ -30,7 +30,7 @@ public class Movement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_movimiento")
-    private Integer idTransaction;
+    private Integer idMovement;
 
     @Column(name = "id_usuario", nullable = false)
     private Integer idUsuario;
@@ -50,7 +50,7 @@ public class Movement {
     private String description;
 
     @Column(name = "fecha_movimiento", nullable = false)
-    private LocalDate transactionDate;
+    private LocalDate movementDate;
 
     @Column(name = "fecha_registro")
     private LocalDateTime createdAt;
