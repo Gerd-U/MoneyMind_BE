@@ -9,6 +9,7 @@ import com.example.MoneyMind.dtos.UserDto;
 import com.example.MoneyMind.dtos.UserRequestDto;
 import com.example.MoneyMind.mappers.UserMapper;
 import com.example.MoneyMind.services.IUserService;
+
 import jakarta.transaction.Transactional;
 
 @Component
@@ -56,5 +57,14 @@ public class UserFacade implements IUserFacade {
     public void removeUser(String email) {
 
         userService.removeUser(email);
+    }
+
+    @Override
+    public UserDto login(String email, String password) {
+        var entity = userService.getByEmail(email);
+        if (!entity.getPassword().equals(password)) {
+            throw new RuntimeException("Contraseña incorrecta");
+        }
+        return userMapper.toUserDto(entity);
     }
 }
