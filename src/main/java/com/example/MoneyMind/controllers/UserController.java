@@ -73,12 +73,12 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<UserDto> login(@Valid @RequestBody LoginRequestModel loginRequestModel) {
-        try {
-            UserDto user = userFacade.login(loginRequestModel.email(), loginRequestModel.password());
-            return ResponseEntity.ok(user);
-        } catch (Exception e) {
-            return ResponseEntity.status(401).build();
-        }
+public ResponseEntity<UserDto> login(@Valid @RequestBody LoginRequestModel loginRequestModel) {
+    try {
+        UserDto user = userFacade.login(loginRequestModel.email(), loginRequestModel.password());
+        return ResponseEntity.ok(user);
+    } catch (Exception e) {
+        return ResponseEntity.status(401).build();
     }
+}
 }
