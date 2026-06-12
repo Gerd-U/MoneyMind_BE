@@ -10,6 +10,8 @@ public interface ICategoryService {
 
     List<Category> getAll();
 
+    List<Category> getAllByUser(Integer idUsuario);
+
     Category getById(Integer id);
 
     Category update(Integer id, Category updatedCategory);

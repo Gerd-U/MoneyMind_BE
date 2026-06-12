@@ -27,6 +27,11 @@ public class CategoryService implements ICategoryService {
     }
 
     @Override
+    public List<Category> getAllByUser(Integer idUsuario) {
+        return categoryRepository.findByUser_Id(idUsuario);
+    }
+
+    @Override
     public Category getById(Integer id) {
         return categoryRepository.findById(id)
                 .orElseThrow(() -> new CategoryNotFoundException("Categoría no encontrada"));
@@ -36,6 +41,7 @@ public class CategoryService implements ICategoryService {
     public Category update(Integer id, Category updatedCategory) {
         Category category = getById(id);
 
+        category.setUser(updatedCategory.getUser());
         category.setMovementType(updatedCategory.getMovementType());
         category.setCategoryName(updatedCategory.getCategoryName());
         category.setDescription(updatedCategory.getDescription());

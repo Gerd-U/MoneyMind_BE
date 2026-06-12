@@ -1,6 +1,7 @@
 package com.example.MoneyMind.facade;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.stereotype.Component;
 
@@ -33,6 +34,8 @@ public class BudgetFacade implements IBudgetFacade {
         Category category = categoryRepository.findById(requestDTO.getIdCategory())
                 .orElseThrow(() -> new CategoryNotFoundException("Categoria no encontrada"));
 
+        validateCategoryBelongsToUser(category, requestDTO.getIdUsuario());
+
         Budget budget = budgetMapper.toEntity(requestDTO, category);
         return budgetMapper.toResponseDTO(budgetService.save(budget));
     }
@@ -53,6 +56,8 @@ public class BudgetFacade implements IBudgetFacade {
         Category category = categoryRepository.findById(requestDTO.getIdCategory())
                 .orElseThrow(() -> new CategoryNotFoundException("Categoria no encontrada"));
 
+        validateCategoryBelongsToUser(category, requestDTO.getIdUsuario());
+
         Budget budget = budgetMapper.toEntity(requestDTO, category);
         return budgetMapper.toResponseDTO(budgetService.update(id, budget));
     }
@@ -60,5 +65,11 @@ public class BudgetFacade implements IBudgetFacade {
     @Override
     public void deleteById(Integer id) {
         budgetService.deleteById(id);
+    }
+
+    private void validateCategoryBelongsToUser(Category category, Integer idUsuario) {
+        if (!Objects.equals(category.getUser().getId(), idUsuario)) {
+            throw new CategoryNotFoundException("La categoría no pertenece al usuario indicado");
+        }
     }
 }

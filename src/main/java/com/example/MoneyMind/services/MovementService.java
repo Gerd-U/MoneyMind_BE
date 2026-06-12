@@ -32,7 +32,7 @@ public class MovementService implements IMovementService {
     @Override
     public Movement getById(Integer id) {
         return movementRepository.findById(id)
-                .orElseThrow(() -> new MovementNotFoundException("Tipo de movimiento no encontrado"));
+                .orElseThrow(() -> new MovementNotFoundException("Movimiento no encontrado"));
     }
 
     @Override
@@ -43,13 +43,13 @@ public class MovementService implements IMovementService {
         movement.setMovementDate(updatedMovement.getMovementDate());
         movement.setCategory(updatedMovement.getCategory());
         movement.setPaymentMethod(updatedMovement.getPaymentMethod());
-        return movementRepository.save(updatedMovement);
+        return movementRepository.save(movement);
     }
 
     @Override
     public void deleteById(Integer id) {
         if (!movementRepository.existsById(id)) {
-            throw new MovementNotFoundException("Tipo de movimiento no encontrado");
+            throw new MovementNotFoundException("Movimiento no encontrado");
         }
         movementRepository.deleteById(id);
     }

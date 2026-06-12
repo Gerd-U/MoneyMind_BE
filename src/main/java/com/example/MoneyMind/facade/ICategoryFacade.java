@@ -11,6 +11,8 @@ public interface ICategoryFacade {
 
     List<CategoryResponseDTO> getAll();
 
+    List<CategoryResponseDTO> getAllByUser(Integer idUsuario);
+
     CategoryResponseDTO getById(Integer id);
 
     CategoryResponseDTO update(Integer id, CategoryRequestDTO requestDTO);

@@ -2,6 +2,7 @@ package com.example.MoneyMind.facade;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.stereotype.Component;
 
@@ -40,6 +41,8 @@ public class MovementFacade implements IMovementFacade {
         Category category = categoryRepository.findById(requestDTO.getIdCategory())
                 .orElseThrow(() -> new CategoryNotFoundException("Categoria no encontrada"));
 
+        validateCategoryBelongsToUser(category, requestDTO.getIdUsuario());
+
         PaymentMethod paymentMethod = paymentMethodRepository.findById(requestDTO.getIdPaymentMethod())
                 .orElseThrow(() -> new PaymentMethodNotFoundException("Método de pago no encontrado"));
 
@@ -63,6 +66,8 @@ public class MovementFacade implements IMovementFacade {
         Category category = categoryRepository.findById(requestDTO.getIdCategory())
                 .orElseThrow(() -> new CategoryNotFoundException("Categoria no encontrada"));
 
+        validateCategoryBelongsToUser(category, requestDTO.getIdUsuario());
+
         PaymentMethod paymentMethod = paymentMethodRepository.findById(requestDTO.getIdPaymentMethod())
                 .orElseThrow(() -> new PaymentMethodNotFoundException("Método de pago no encontrado"));
 
@@ -73,5 +78,11 @@ public class MovementFacade implements IMovementFacade {
     @Override
     public void deleteById(Integer id) {
         movementService.deleteById(id);
+    }
+
+    private void validateCategoryBelongsToUser(Category category, Integer idUsuario) {
+        if (!Objects.equals(category.getUser().getId(), idUsuario)) {
+            throw new CategoryNotFoundException("La categoría no pertenece al usuario indicado");
+        }
     }
 }
