@@ -18,6 +18,10 @@ public class Category {
     private Integer idCategory;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_usuario", nullable = false)
+    private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_tipo_movimiento", nullable = false)
     private MovementType movementType;
 
