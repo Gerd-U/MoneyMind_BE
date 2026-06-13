@@ -4,6 +4,7 @@ import com.example.MoneyMind.dtos.CategoryRequestDTO;
 import com.example.MoneyMind.dtos.CategoryResponseDTO;
 import com.example.MoneyMind.entities.Category;
 import com.example.MoneyMind.entities.MovementType;
+import com.example.MoneyMind.entities.User;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -12,12 +13,13 @@ import java.util.stream.Collectors;
 @Component
 public class CategoryMapper {
 
-    public Category toEntity(CategoryRequestDTO dto, MovementType movementType) {
+    public Category toEntity(CategoryRequestDTO dto, MovementType movementType, User user) {
         if (dto == null) {
             return null;
         }
 
         return Category.builder()
+                .user(user)
                 .movementType(movementType)
                 .categoryName(dto.getCategoryName())
                 .description(dto.getDescription())
@@ -32,6 +34,7 @@ public class CategoryMapper {
 
         return CategoryResponseDTO.builder()
                 .idCategory(category.getIdCategory())
+                .idUsuario(category.getUser().getId())
                 .idMovementType(category.getMovementType().getIdMovementType())
                 .movementTypeName(category.getMovementType().getTypeName())
                 .categoryName(category.getCategoryName())

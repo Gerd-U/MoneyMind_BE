@@ -16,6 +16,9 @@ import lombok.Setter;
 @Builder
 public class CategoryRequestDTO {
 
+    @NotNull(message = "El usuario es obligatorio")
+    private Integer idUsuario;
+
     @NotNull(message = "El tipo de movimiento es obligatorio")
     private Integer idMovementType;
 

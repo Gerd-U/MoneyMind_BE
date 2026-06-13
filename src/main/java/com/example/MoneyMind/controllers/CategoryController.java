@@ -29,10 +29,14 @@ public class CategoryController {
     }
 
     @GetMapping
-    public ResponseEntity<List<CategoryResponseDTO>> getAll() {
-        List<CategoryResponseDTO> categories = categoryFacade.getAll();
+    public ResponseEntity<List<CategoryResponseDTO>> getAll(
+            @RequestParam(required = false) Integer idUsuario) {
 
-        return ResponseEntity.ok(categories);
+        if (idUsuario != null) {
+            return ResponseEntity.ok(categoryFacade.getAllByUser(idUsuario));
+        }
+
+        return ResponseEntity.ok(categoryFacade.getAll());
     }
 
     @GetMapping("/{id}")
